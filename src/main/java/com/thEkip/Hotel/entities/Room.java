@@ -1,7 +1,10 @@
 package com.thEkip.Hotel.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.thEkip.Hotel.enums.RoomType;
 import jakarta.persistence.*;
+
+import java.util.List;
 
 @Entity
 @Table(name="room")
@@ -21,5 +24,9 @@ public class Room {
     @Enumerated(EnumType.STRING)
     @Column(name="type")
     private RoomType type;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "room")
+    private List<Reservation> reservations;
 
 }

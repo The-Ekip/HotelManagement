@@ -23,12 +23,12 @@ public class Reservation {
     private LocalDateTime endDate;
 
     @ManyToOne
-    @Column (name="room_id")
+    @JoinColumn (name="room_id")
     private Room room;
 
     @ManyToOne
-    @Column(name="reservation_id")
-    private Reservation reservation;
+    @JoinColumn(name="customer_id")
+    private Customer customer;
 
 
 }
