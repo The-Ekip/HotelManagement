@@ -1,15 +1,12 @@
-package com.thEkip.Hotel.api;
+package com.thEkip.Hotel.api.controllers;
 
+import com.thEkip.Hotel.api.dto.reponses.ReservationAddResponse;
+import com.thEkip.Hotel.api.dto.requests.ReservationAddRequest;
 import com.thEkip.Hotel.entities.Reservation;
 import com.thEkip.Hotel.service.abstracts.ReservationService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -21,14 +18,11 @@ public class ReservationController {
 
     private final ReservationService reservationService;
 
-    //ResponseEntity ResponseEntity
     @GetMapping
-    public ResponseEntity<List<Reservation>> getAllReservations () {
+    public ResponseEntity getAllReservations () {
         List<Reservation> reservations = reservationService.getAllReservations();
         return ResponseEntity.ok(reservations);
     }
-
-
     @GetMapping("/{reservationId}")
     public Reservation getOneReservationById(@PathVariable long reservationId) {
         return reservationService.getOneReservationByReservationId(reservationId);
@@ -39,5 +33,13 @@ public class ReservationController {
     public List<Reservation> getAllReservationsByDate(){
         LocalDateTime date= LocalDateTime.now();
         return reservationService.getAllReservationsByDate(date);
+    }
+
+    @PostMapping
+    public ResponseEntity addOneReservation(@RequestBody ReservationAddRequest request) {
+        var newReservation = reservationService
+                .createNewReservation(request.responseToReservationServiceAddRequest());
+        ReservationAddResponse reservationAddResponse = ReservationAddResponse.responseFromServiceToDto(newReservation);
+        return ResponseEntity.ok(reservationAddResponse);
     }
 }
