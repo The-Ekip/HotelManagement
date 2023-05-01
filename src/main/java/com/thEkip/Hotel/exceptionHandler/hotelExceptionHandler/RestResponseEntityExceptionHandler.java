@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
+//@link https://www.baeldung.com/exception-handling-for-rest-with-spring
 @ControllerAdvice
 public class RestResponseEntityExceptionHandler
         extends ResponseEntityExceptionHandler {
@@ -19,9 +20,10 @@ public class RestResponseEntityExceptionHandler
         return handleExceptionInternal(ex, bodyOfResponse,
                 new HttpHeaders(), HttpStatus.CONFLICT, request);
     }
+
     @ExceptionHandler(value = { EntityNotFoundException.class, EntityNotFoundException.class })
     protected ResponseEntity<Object> handleEntityNotFoundConflict(RuntimeException ex, WebRequest request) {
-        String bodyOfResponse = "This should be application specific";
+        String bodyOfResponse = ex.getLocalizedMessage();
         return ResponseEntity.badRequest().body(bodyOfResponse);
     }
 }

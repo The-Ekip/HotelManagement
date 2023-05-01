@@ -40,5 +40,4 @@ public class ReservationController {
         LocalDateTime date= LocalDateTime.now();
         return reservationService.getAllReservationsByDate(date);
     }
-
 }
