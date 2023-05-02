@@ -3,11 +3,13 @@ package com.thEkip.Hotel.entities;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.thEkip.Hotel.enums.RoomType;
 import jakarta.persistence.*;
+import lombok.Data;
 
 import java.util.List;
 
 @Entity
 @Table(name="room")
+@Data
 public class Room {
 
     @Id

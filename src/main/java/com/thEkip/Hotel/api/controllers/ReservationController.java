@@ -4,6 +4,7 @@ import com.thEkip.Hotel.api.dto.reponses.ReservationAddResponse;
 import com.thEkip.Hotel.api.dto.requests.ReservationAddRequest;
 import com.thEkip.Hotel.entities.Reservation;
 import com.thEkip.Hotel.service.abstracts.ReservationService;
+import com.thEkip.Hotel.service.dto.reponses.ReservationServiceAddResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -37,8 +38,7 @@ public class ReservationController {
 
     @PostMapping
     public ResponseEntity addOneReservation(@RequestBody ReservationAddRequest request) {
-        var newReservation = reservationService
-                .createNewReservation(request.responseToReservationServiceAddRequest());
+        ReservationServiceAddResponse newReservation = reservationService.createNewReservation(request.responseToReservationServiceAddRequest());
         ReservationAddResponse reservationAddResponse = ReservationAddResponse.responseFromServiceToDto(newReservation);
         return ResponseEntity.ok(reservationAddResponse);
     }

@@ -14,4 +14,6 @@ public class ReservationServiceAddRequest {
     private LocalDateTime endDate;
     private LocalDateTime startDate;
 
+
+
 }

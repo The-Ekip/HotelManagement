@@ -19,8 +19,9 @@ public class ReservationAddResponse {
     private Customer customer;
 
     public static ReservationAddResponse responseFromServiceToDto(ReservationServiceAddResponse response ) {
-        return  new ReservationAddResponse( response.getReservationId(),response.getStartDate(),
+        ReservationAddResponse rsa =  new ReservationAddResponse( response.getReservationId(),response.getStartDate(),
                                             response.getEndDate(),response.getRoom(),response.getCustomer());
+        return rsa;
     }
 
 

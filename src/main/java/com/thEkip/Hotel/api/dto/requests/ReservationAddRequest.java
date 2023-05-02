@@ -3,9 +3,11 @@ package com.thEkip.Hotel.api.dto.requests;
 import com.thEkip.Hotel.api.dto.reponses.ReservationAddResponse;
 import com.thEkip.Hotel.service.dto.reponses.ReservationServiceAddResponse;
 import com.thEkip.Hotel.service.dto.requests.ReservationServiceAddRequest;
+import lombok.Data;
 
 import java.time.LocalDateTime;
 
+@Data
 public  class ReservationAddRequest {
 
     private LocalDateTime startDate;
@@ -17,7 +19,7 @@ public  class ReservationAddRequest {
     private long customerId;
 
     public ReservationServiceAddRequest responseToReservationServiceAddRequest() {
-        return  new ReservationServiceAddRequest(this.roomId,this.customerId,this.endDate,this.startDate);
+        return  new ReservationServiceAddRequest(this.customerId,this.roomId,this.endDate,this.startDate);
 
     }
 
