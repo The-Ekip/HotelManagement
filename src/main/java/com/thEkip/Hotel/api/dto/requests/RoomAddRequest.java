@@ -1,6 +1,5 @@
 package com.thEkip.Hotel.api.dto.requests;
 
-import com.thEkip.Hotel.entities.Customer;
 import com.thEkip.Hotel.entities.Room;
 import com.thEkip.Hotel.enums.RoomType;
 import lombok.Data;

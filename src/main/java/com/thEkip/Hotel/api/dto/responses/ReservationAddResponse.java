@@ -1,4 +1,4 @@
-package com.thEkip.Hotel.api.dto.reponses;
+package com.thEkip.Hotel.api.dto.responses;
 
 import com.thEkip.Hotel.entities.Customer;
 import com.thEkip.Hotel.entities.Room;

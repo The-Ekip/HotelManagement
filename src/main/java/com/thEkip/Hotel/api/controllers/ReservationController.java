@@ -1,10 +1,13 @@
 package com.thEkip.Hotel.api.controllers;
 
-import com.thEkip.Hotel.api.dto.reponses.ReservationAddResponse;
+import com.thEkip.Hotel.api.dto.responses.ReservationAddResponse;
 import com.thEkip.Hotel.api.dto.requests.ReservationAddRequest;
 import com.thEkip.Hotel.entities.Reservation;
 import com.thEkip.Hotel.service.abstracts.ReservationService;
 import com.thEkip.Hotel.service.dto.reponses.ReservationServiceAddResponse;
+import com.thEkip.Hotel.utilities.response.ErrorResponse;
+import com.thEkip.Hotel.utilities.response.Response;
+import com.thEkip.Hotel.utilities.response.SuccessDataResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -22,11 +25,13 @@ public class ReservationController {
     @GetMapping
     public ResponseEntity getAllReservations () {
         List<Reservation> reservations = reservationService.getAllReservations();
-        return ResponseEntity.ok(reservations);
+        return ResponseEntity.ok(new SuccessDataResponse("Successfully Reservations Listed", reservations));
     }
+
     @GetMapping("/{reservationId}")
-    public Reservation getOneReservationById(@PathVariable long reservationId) {
-        return reservationService.getOneReservationByReservationId(reservationId);
+    public ResponseEntity getOneReservationById(@PathVariable long reservationId) {
+        Reservation byReservationId = reservationService.getOneReservationByReservationId(reservationId);
+        return ResponseEntity.ok(new SuccessDataResponse("Successfully Reservations Listed",byReservationId));
     }
 
     //TODO sonra tekrar bakılacak
@@ -40,6 +45,13 @@ public class ReservationController {
     public ResponseEntity addOneReservation(@RequestBody ReservationAddRequest request) {
         ReservationServiceAddResponse newReservation = reservationService.createNewReservation(request.responseToReservationServiceAddRequest());
         ReservationAddResponse reservationAddResponse = ReservationAddResponse.responseFromServiceToDto(newReservation);
-        return ResponseEntity.ok(reservationAddResponse);
+        return ResponseEntity.ok(new SuccessDataResponse("Successfully Reservations Listed",reservationAddResponse));
     }
+
+    @DeleteMapping("/{reservationId}")
+    public ResponseEntity addOneReservation(@PathVariable long reservationId) {
+        reservationService.deleteById(reservationId);
+        return ResponseEntity.ok(new Response("Successfully Reservation Deleted",true));
+    }
+
 }

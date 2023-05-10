@@ -1,7 +1,5 @@
 package com.thEkip.Hotel.api.dto.requests;
 
-import com.thEkip.Hotel.api.dto.reponses.ReservationAddResponse;
-import com.thEkip.Hotel.service.dto.reponses.ReservationServiceAddResponse;
 import com.thEkip.Hotel.service.dto.requests.ReservationServiceAddRequest;
 import lombok.Data;
 

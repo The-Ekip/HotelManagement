@@ -1,10 +1,8 @@
 package com.thEkip.Hotel.service.abstracts;
 
-import com.thEkip.Hotel.api.dto.reponses.ReservationAddResponse;
 import com.thEkip.Hotel.entities.Reservation;
 import com.thEkip.Hotel.service.dto.reponses.ReservationServiceAddResponse;
 import com.thEkip.Hotel.service.dto.requests.ReservationServiceAddRequest;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -19,4 +17,6 @@ public interface ReservationService  {
     List<Reservation> getAllReservationsByDate(LocalDateTime date);
 
     ReservationServiceAddResponse createNewReservation(ReservationServiceAddRequest request);
+
+    void deleteById(long reservationId);
 }

@@ -6,7 +6,8 @@ import org.springframework.stereotype.Service;
 
 @Service
 public interface RoomService {
-    Room createOneRoom(RoomAddRequest request);
 
+    Room createOneRoom(RoomAddRequest request);
     Room getOneRoomById(long roomId);
+
 }
