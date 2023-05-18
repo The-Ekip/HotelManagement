@@ -8,6 +8,9 @@ import com.thEkip.Hotel.service.abstracts.RoomService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
+import java.util.List;
+
 @AllArgsConstructor
 @Service
 public class RoomManager implements RoomService {
@@ -26,5 +29,10 @@ public class RoomManager implements RoomService {
     @Override
     public Room getOneRoomById(long roomId) {
         return roomRepository.findById(roomId).orElseThrow(()-> new EntityNotFoundException("room"));
+    }
+
+    @Override
+    public List<Room> findAvailableRooms(LocalDateTime dateTime) {
+        return roomRepository.findAvailableRooms(dateTime,dateTime);
     }
 }
