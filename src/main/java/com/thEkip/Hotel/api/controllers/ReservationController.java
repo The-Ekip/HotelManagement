@@ -3,6 +3,7 @@ package com.thEkip.Hotel.api.controllers;
 import com.thEkip.Hotel.api.dto.responses.ReservationAddResponse;
 import com.thEkip.Hotel.api.dto.requests.ReservationAddRequest;
 import com.thEkip.Hotel.entities.Reservation;
+import com.thEkip.Hotel.exceptionHandler.hotelExceptions.EntityNotFoundException;
 import com.thEkip.Hotel.service.abstracts.ReservationService;
 import com.thEkip.Hotel.service.dto.reponses.ReservationServiceAddResponse;
 import com.thEkip.Hotel.utilities.response.ErrorResponse;
