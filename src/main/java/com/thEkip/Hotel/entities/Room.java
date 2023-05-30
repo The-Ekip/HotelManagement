@@ -23,6 +23,9 @@ public class Room {
     @Column(name="statu")
     private boolean statu;
 
+    @Column(name="description")
+    private String description;
+
     @Enumerated(EnumType.STRING)
     @Column(name="type")
     private RoomType type;
