@@ -22,7 +22,7 @@ public class RoomController {
     @PostMapping
     public ResponseEntity createOneRoom(@RequestBody RoomAddRequest request) {
         Room room = roomService.createOneRoom(request);
-        return ResponseEntity.ok(room);
+        return ResponseEntity.ok(new SuccessDataResponse("Room successfully added",room));
     }
 
     @GetMapping("/{localDateTime}")

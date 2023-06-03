@@ -23,6 +23,7 @@ public class RoomManager implements RoomService {
         room.setFloor(request.getFloor());
         room.setType(request.getType());
         room.setStatu(request.isStatu());
+        room.setDescription(request.getDescription());
         return roomRepository.save(room);
     }
 
