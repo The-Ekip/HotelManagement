@@ -3,6 +3,7 @@ package com.thEkip.Hotel.api.controllers;
 import com.thEkip.Hotel.api.dto.requests.RoomAddRequest;
 import com.thEkip.Hotel.entities.Room;
 import com.thEkip.Hotel.service.abstracts.RoomService;
+import com.thEkip.Hotel.utilities.response.SuccessDataResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.ResponseEntity;
@@ -30,5 +31,11 @@ public class RoomController {
         List<Room> rooms = roomService.findAvailableRooms(localDateTime);
 
         return ResponseEntity.ok(rooms);
+    }
+    @GetMapping()
+    public ResponseEntity getAllRooms()
+    {
+        List<Room> rooms = roomService.findAllRooms();
+        return ResponseEntity.ok(new SuccessDataResponse("Rooms listed",rooms));
     }
 }

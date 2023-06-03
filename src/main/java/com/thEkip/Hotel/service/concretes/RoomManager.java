@@ -35,4 +35,9 @@ public class RoomManager implements RoomService {
     public List<Room> findAvailableRooms(LocalDateTime dateTime) {
         return roomRepository.findAvailableRooms(dateTime,dateTime);
     }
+
+    @Override
+    public List<Room> findAllRooms() {
+        return roomRepository.findAll();
+    }
 }

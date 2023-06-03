@@ -13,4 +13,5 @@ public interface RoomService {
     Room createOneRoom(RoomAddRequest request);
     Room getOneRoomById(long roomId);
     List<Room> findAvailableRooms(LocalDateTime localDateTime);
+    List<Room> findAllRooms();
 }
